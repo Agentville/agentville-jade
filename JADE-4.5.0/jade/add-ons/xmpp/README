@@ -1,0 +1,65 @@
+README file for XMPP MTP for JADE, Version $Name: JADE-3_3 $
+
+INTRODUCTION
+============
+
+This file contains a XMPP MTP for JADE.
+Available at http://jade.tilab.com/
+A tutorial is available at http://jade.tilab.com/doc/tutorials/XMPP_UPV.html
+
+
+LICENSE
+=======
+See file COPYING
+
+
+SYSTEM REQUIREMENTS
+===================
+
+This MTP requires JADE, smack and crimson libraries. The latter are already included in the distribution zip 
+package, but can be updated from
+
+SAMCK Homepage: http://www.jivesoftware.org/smack/
+CRIMSON Homepage: http://xml.apache.org/crimson/
+
+INSTALLATION
+============
+Assuming the JADE binary distribution has already been installed (unzipped) in your PC or server, you should have the following directory structure:
+
+jade/
+  |-...
+  |- lib/
+      |- jade.jar (Basic JADE runtime system)
+	  
+To install the XMPP MTP just unzip the distribution zip file in to the jade/ directory thus obtaining
+jade/
+  |-add-ons/
+      |-xmpp/
+         |-...
+	     |-lib/
+	        |-... (additional libraries needed by the XMPP MTP)
+		    |-xmpp.jar (the XMPP MTP classes)
+  |-...
+  |- lib/
+      |- jade.jar (Basic JADE runtime system)
+
+Furthermore it is convenient to set the CLASSPATH environment variable to include both jade.jar and all jar files included in the jade/add-ons/xmpp/lib/ directory
+
+
+USAGE
+=======
+In order to activate the XMPP MTP it is necessary to specify the following command line parameters
+-mtps jade.mtp.xmpp.MessageTransportProtocol   // Tells JADE to activate the XMPP MTP
+-jade_mtp_xmpp_server <jabber server>          // Tells the XMPP MTP where to find the jabber server 
+-jade_mtp_xmpp_username <username>             // Credentials to access the jabber server 
+-jade_mtp_xmpp_password <password>
+
+As an Example (assuming the CLASSPATH has been properly set):
+
+java jade.Boot -gui -mtps jade.mtp.xmpp.MessageTransportProtocol -jade_mtp_xmpp_server  jabber.org -jade_mtp_xmpp_username jade -jade_mtp_xmpp_password secret
+
+Supported MTP address kinds
+---------------------------
+
+The XMPP MTP supports 'xmpp://' addresses.
+
